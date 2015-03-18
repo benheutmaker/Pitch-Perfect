@@ -48,7 +48,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="stopAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="AsJ-gn-BBS"/>
+                                    <action selector="playPauseAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3Ch-TH-VTe"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lx3-iW-RAU">
@@ -79,9 +79,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="Gxr-xj-Lhd"/>
                     <connections>
+                        <outlet property="instructLabel" destination="lx3-iW-RAU" id="CLZ-Te-vmK"/>
                         <outlet property="playPauseButton" destination="74u-WL-p6j" id="hRE-fM-wW2"/>
                         <outlet property="recordButton" destination="4HA-vN-pXQ" id="Gal-dA-YMw"/>
-                        <outlet property="recordingInProgress" destination="lx3-iW-RAU" id="dcW-ww-8Fj"/>
                         <outlet property="stopRecordingButton" destination="2vU-PJ-EV9" id="SSf-AY-9cw"/>
                         <segue destination="M9s-zj-b9V" kind="show" identifier="stopRecording" id="FtG-EN-O5b"/>
                     </connections>
@@ -112,7 +112,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="playSlowAudio:" destination="M9s-zj-b9V" eventType="touchUpInside" id="yKi-IY-jAk"/>
+                                    <action selector="slowAudioAction:" destination="M9s-zj-b9V" eventType="touchUpInside" id="teP-CF-can"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45y-7V-ruJ">
@@ -125,7 +125,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="playFastAudio:" destination="M9s-zj-b9V" eventType="touchUpInside" id="MXI-dM-3mA"/>
+                                    <action selector="fastAudioAction:" destination="M9s-zj-b9V" eventType="touchUpInside" id="0h7-IX-TNI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hZ-fh-vxQ">
@@ -134,7 +134,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="stopPlayback:" destination="M9s-zj-b9V" eventType="touchUpInside" id="ysp-x5-IQc"/>
+                                    <action selector="stopAction:" destination="M9s-zj-b9V" eventType="touchUpInside" id="xSf-PX-FoQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dm-lB-fDv">
@@ -147,7 +147,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="playChipmunkAudio:" destination="M9s-zj-b9V" eventType="touchUpInside" id="N8b-zc-YhU"/>
+                                    <action selector="chipmunkAudioAction:" destination="M9s-zj-b9V" eventType="touchUpInside" id="WIj-X2-2vQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJv-fw-cgG">
@@ -160,7 +160,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="playDarthVaderAudio:" destination="M9s-zj-b9V" eventType="touchUpInside" id="mq8-Vi-Fap"/>
+                                    <action selector="darthVaderAudioAction:" destination="M9s-zj-b9V" eventType="touchUpInside" id="2wF-aQ-B8A"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cu1-8f-iyn">
@@ -172,6 +172,9 @@
                                 <state key="normal" image="echo">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="delayAudioAction:" destination="M9s-zj-b9V" eventType="touchUpInside" id="i0g-YG-PNq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5F-1J-lAy">
                                 <rect key="frame" x="333" y="344" width="100" height="100"/>
@@ -182,6 +185,9 @@
                                 <state key="normal" image="church">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="reverbAudioAction:" destination="M9s-zj-b9V" eventType="touchUpInside" id="FLt-Ct-XBE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
